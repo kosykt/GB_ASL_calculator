@@ -10,5 +10,11 @@
     <string name="btn_8">8</string>
     <string name="btn_9">9</string>
     <string name="btn_0">0</string>
+    <string name="btn_dot">.</string>
+    <string name="btn_result">=</string>
+    <string name="btn_divide">/</string>
+    <string name="btn_multiply">*</string>
+    <string name="btn_minus">-</string>
+    <string name="btn_sum">+</string>
     />
 </resources>
