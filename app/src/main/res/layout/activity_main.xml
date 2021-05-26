@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/ic_previewbackgroundone">
 
+    <!--Выбрал ConstraintLayout потому, что так правильно, наверно ¯\_(ツ)_/¯-->
+
     <Button
         android:id="@+id/btn_c"
         android:layout_width="wrap_content"
