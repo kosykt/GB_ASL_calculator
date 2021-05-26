@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/ic_previewbackgroundone">
 
-    <!--Выбрал ConstraintLayout потому, что так правильно, наверно ¯\_(ツ)_/¯-->
-
     <Button
         android:id="@+id/btn_c"
         android:layout_width="wrap_content"
@@ -15,10 +13,10 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_c"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/btn_divide"
         app:layout_constraintEnd_toEndOf="@id/btn_divide"
         app:layout_constraintStart_toStartOf="@id/btn_divide" />
-
 
     <TextView
         android:id="@+id/calculator_txt"
@@ -27,11 +25,10 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="@dimen/calculator_txt_size"
         app:layout_constraintBottom_toTopOf="@id/btn_9"
         app:layout_constraintEnd_toStartOf="@id/btn_c"
         tools:text="example" />
-
 
     <Button
         android:id="@+id/btn_7"
@@ -40,13 +37,13 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_7"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/btn_4"
         app:layout_constraintEnd_toStartOf="@id/btn_8"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
-
 
     <Button
         android:id="@+id/btn_8"
@@ -55,6 +52,7 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_8"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/btn_5"
         app:layout_constraintEnd_toStartOf="@+id/btn_9"
         app:layout_constraintStart_toEndOf="@id/btn_7"
@@ -68,6 +66,7 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_9"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/btn_6"
         app:layout_constraintEnd_toStartOf="@id/btn_divide"
         app:layout_constraintStart_toEndOf="@id/btn_8"
@@ -81,6 +80,7 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_divide"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/btn_multiply"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_9"
@@ -94,6 +94,7 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_4"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/btn_1"
         app:layout_constraintEnd_toStartOf="@id/btn_5"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -107,6 +108,7 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_5"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/btn_2"
         app:layout_constraintEnd_toStartOf="@id/btn_6"
         app:layout_constraintStart_toEndOf="@id/btn_4"
@@ -119,6 +121,7 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_6"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/btn_3"
         app:layout_constraintEnd_toStartOf="@id/btn_multiply"
         app:layout_constraintStart_toEndOf="@id/btn_5"
@@ -131,11 +134,11 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_multiply"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/btn_minus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_6"
         app:layout_constraintTop_toBottomOf="@id/btn_divide" />
-
 
     <Button
         android:id="@+id/btn_1"
@@ -144,6 +147,7 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_1"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/btn_bot"
         app:layout_constraintEnd_toStartOf="@id/btn_2"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -157,6 +161,7 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_2"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/btn_0"
         app:layout_constraintEnd_toStartOf="@id/btn_3"
         app:layout_constraintStart_toEndOf="@id/btn_1"
@@ -169,6 +174,7 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_3"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/btn_result"
         app:layout_constraintEnd_toStartOf="@id/btn_minus"
         app:layout_constraintStart_toEndOf="@id/btn_2"
@@ -181,6 +187,7 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_minus"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/btn_sum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_3"
@@ -193,6 +200,7 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_dot"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_0"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -206,6 +214,7 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_0"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_result"
         app:layout_constraintStart_toEndOf="@id/btn_bot"
@@ -218,6 +227,7 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_result"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_sum"
         app:layout_constraintStart_toEndOf="@id/btn_0"
@@ -230,6 +240,7 @@
         android:layout_marginLeft="@dimen/margins_left_right"
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_sum"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_result"
