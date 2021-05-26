@@ -16,5 +16,6 @@
     <string name="btn_multiply">*</string>
     <string name="btn_minus">-</string>
     <string name="btn_sum">+</string>
+    <string name="btn_c">C</string>
     />
 </resources>
