@@ -7,6 +7,31 @@
     android:background="@drawable/ic_previewbackgroundone">
 
     <Button
+        android:id="@+id/btn_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:text="@string/btn_c"
+        app:layout_constraintBottom_toTopOf="@id/btn_divide"
+        app:layout_constraintEnd_toEndOf="@id/btn_divide"
+        app:layout_constraintStart_toStartOf="@id/btn_divide" />
+
+
+    <TextView
+        android:id="@+id/calculator_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/btn_9"
+        app:layout_constraintEnd_toStartOf="@id/btn_c"
+        tools:text="example" />
+
+
+    <Button
         android:id="@+id/btn_7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
