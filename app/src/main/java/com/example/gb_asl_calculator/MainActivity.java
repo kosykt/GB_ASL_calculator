@@ -11,14 +11,15 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int counter = 0;
+    private Counter counter;
     private TextView calculatorView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
+        counter = new Counter();
         initView();
     }
 
@@ -28,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
         button_0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                counter++;
-                setTextOnCalculatorView(calculatorView, counter);
+                counter.incrementCounter();
+                setTextOnCalculatorView(calculatorView, counter.getCounter());
 
             }
         });
