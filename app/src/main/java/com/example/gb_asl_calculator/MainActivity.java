@@ -38,6 +38,69 @@ public class MainActivity extends AppCompatActivity {
         initButton_7();
         initButton_8();
         initButton_9();
+        initButton_dot();
+        initButton_result();
+        initButton_minus();
+        initButton_sum();
+        initButton_divide();
+        initButton_multiply();
+        initButton_c();
+    }
+
+    private void initButton_c() {
+        Button button_c = findViewById(R.id.btn_c);
+        button_c.setOnClickListener(v -> {
+            counter.incrementCounter();
+            MainActivity.this.setTextOnCalculatorView(calculatorView, counter.getCounter());
+        });
+    }
+
+    private void initButton_multiply() {
+        Button button_multiply = findViewById(R.id.btn_multiply);
+        button_multiply.setOnClickListener(v -> {
+            counter.incrementCounter();
+            MainActivity.this.setTextOnCalculatorView(calculatorView, counter.getCounter());
+        });
+    }
+
+    private void initButton_divide() {
+        Button button_divide = findViewById(R.id.btn_divide);
+        button_divide.setOnClickListener(v -> {
+            counter.incrementCounter();
+            MainActivity.this.setTextOnCalculatorView(calculatorView, counter.getCounter());
+        });
+    }
+
+    private void initButton_sum() {
+        Button button_sum = findViewById(R.id.btn_sum);
+        button_sum.setOnClickListener(v -> {
+            counter.incrementCounter();
+            MainActivity.this.setTextOnCalculatorView(calculatorView, counter.getCounter());
+        });
+    }
+
+    private void initButton_minus() {
+        Button button_minus = findViewById(R.id.btn_minus);
+        button_minus.setOnClickListener(v -> {
+            counter.incrementCounter();
+            MainActivity.this.setTextOnCalculatorView(calculatorView, counter.getCounter());
+        });
+    }
+
+    private void initButton_result() {
+        Button button_result = findViewById(R.id.btn_result);
+        button_result.setOnClickListener(v -> {
+            counter.incrementCounter();
+            MainActivity.this.setTextOnCalculatorView(calculatorView, counter.getCounter());
+        });
+    }
+
+    private void initButton_dot() {
+        Button button_dot = findViewById(R.id.btn_dot);
+        button_dot.setOnClickListener(v -> {
+            counter.incrementCounter();
+            MainActivity.this.setTextOnCalculatorView(calculatorView, counter.getCounter());
+        });
     }
 
     private void initButton_9() {
