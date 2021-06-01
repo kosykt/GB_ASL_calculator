@@ -36,32 +36,33 @@ public class MainActivity extends AppCompatActivity {
             clickMathOperation = true;
             operation.setSymbol("+");
             calculatorView.setText(calculatorView.getText() + "+");
-            saveNumView.setText(operation.getSymbol());
         });
         button_minus.setOnClickListener((View v) -> {
             clickMathOperation = true;
             operation.setSymbol("-");
             calculatorView.setText(calculatorView.getText() + "-");
-            saveNumView.setText(operation.getSymbol());
         });
         button_divide.setOnClickListener((View v) -> {
             clickMathOperation = true;
             operation.setSymbol("/");
             calculatorView.setText(calculatorView.getText() + "/");
-            saveNumView.setText(operation.getSymbol());
         });
         button_multiply.setOnClickListener((View v) -> {
             clickMathOperation = true;
             operation.setSymbol("*");
             calculatorView.setText(calculatorView.getText() + "*");
-            saveNumView.setText(operation.getSymbol());
         });
-//        button_clear.setOnClickListener(v -> {
-//            saveNum = null;
-//            saveNumView.setText(null);
-//            saveMathOperation = null;
-//            calculatorView.setText(null);
-//        });
+        button_clear.setOnClickListener(v -> {
+            saveNumView.setText(null);
+            calculatorView.setText(null);
+            operation.setSymbol(null);
+            operation.setNum1(null);
+            operation.setNum2(null);
+            operation.setAnswer(null);
+        });
+        button_result.setOnClickListener(v -> {
+            saveNumView.setText(operation.getAnswer());
+        });
 //        button_result.setOnClickListener(v -> {
 //            if (saveMathOperation.equals("+")){
 //                saveNumView.setText(operation.plusOp(saveNum, String.valueOf(calculatorView.getText())));

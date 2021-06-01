@@ -31,7 +31,11 @@ public class Operation {
     }
 
     public String getAnswer() {
-        return answer;
+        if (symbol.equals("+")){
+            return "+";
+        }else {
+            return "";
+        }
     }
 
     public void setAnswer(String answer) {
