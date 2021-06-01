@@ -13,6 +13,7 @@ public class Operation {
     public String multiplyOp (String n1, String n2){
         return Float.toString(Float.parseFloat(n1) * Float.parseFloat(n2));
     }
+
     public String divideOp (String n1, String n2){
         return Float.toString(Float.parseFloat(n1) / Float.parseFloat(n2));
     }
