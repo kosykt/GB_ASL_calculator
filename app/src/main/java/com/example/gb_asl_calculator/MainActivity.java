@@ -61,16 +61,16 @@ public class MainActivity extends AppCompatActivity {
         });
         button_result.setOnClickListener(v -> {
             saveNumView.setText(null);
-            if (saveMathOperation == "+"){
+            if (saveMathOperation.equals("+")){
                 calculatorView.setText(operation.plusOp(saveNum, String.valueOf(calculatorView.getText())));
             }
-            if (saveMathOperation == "-"){
+            if (saveMathOperation.equals("-")){
                 calculatorView.setText(operation.minusOp(saveNum, String.valueOf(calculatorView.getText())));
             }
-            if (saveMathOperation == "*"){
+            if (saveMathOperation.equals("*")){
                 calculatorView.setText(operation.multiplyOp(saveNum, String.valueOf(calculatorView.getText())));
             }
-            if (saveMathOperation == "/"){
+            if (saveMathOperation.equals("/")){
                 calculatorView.setText(operation.divideOp(saveNum, String.valueOf(calculatorView.getText())));
             }
 
