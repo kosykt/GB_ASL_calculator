@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Operation operation;
+
     private TextView calculatorView, saveNumView;
     private String saveNum, saveMathOperation;
     private Button button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_dot, button_plus, button_minus, button_divide, button_multiply, button_clear, button_result;
@@ -18,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        operation = new Operation();
 
         initCalculator();
         setNumOnView();
@@ -56,10 +60,20 @@ public class MainActivity extends AppCompatActivity {
             calculatorView.setText(null);
         });
         button_result.setOnClickListener(v -> {
-            saveNum = null;
             saveNumView.setText(null);
-            saveMathOperation = null;
-            calculatorView.setText(null);
+            if (saveMathOperation == "+"){
+                calculatorView.setText(operation.plusOp(saveNum, String.valueOf(calculatorView.getText())));
+            }
+            if (saveMathOperation == "-"){
+                calculatorView.setText(operation.minusOp(saveNum, String.valueOf(calculatorView.getText())));
+            }
+            if (saveMathOperation == "*"){
+                calculatorView.setText(operation.multiplyOp(saveNum, String.valueOf(calculatorView.getText())));
+            }
+            if (saveMathOperation == "/"){
+                calculatorView.setText(operation.divideOp(saveNum, String.valueOf(calculatorView.getText())));
+            }
+
         });
     }
 
