@@ -15,8 +15,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView calculatorView, saveNumView;
     private String subText;
     private Button button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_dot, button_plus, button_minus, button_divide, button_multiply, button_clear, button_result;
-//    private final Button[] numButtonsArr = new Button[]{button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9};
-//    private final int[] numberButtonIds = new int[]{R.id.btn_0, R.id.btn_1, R.id.btn_2, R.id.btn_3, R.id.btn_4, R.id.btn_5, R.id.btn_6, R.id.btn_7, R.id.btn_8, R.id.btn_9};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +77,9 @@ public class MainActivity extends AppCompatActivity {
             operation.setClickMathOperation(false);
         });
         button_result.setOnClickListener(v -> {
-            saveNumView.setText(operation.getAnswer());
+            calculatorView.setText(operation.getAnswer());
+            subText = null;
+            operation.setClickMathOperation(false);
         });
     }
 
@@ -90,9 +90,9 @@ public class MainActivity extends AppCompatActivity {
             operation.setNum1((String) calculatorView.getText());
         } else {
             calculatorView.setText(calculatorView.getText() + s);
-            if (subText == null){
+            if (subText == null) {
                 subText = s;
-            }else {
+            } else {
                 subText = subText + s;
             }
             operation.setNum2(subText);
@@ -100,44 +100,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setNumOnView() {
-        button_0.setOnClickListener(v -> {
-            setNumInOperationClass("0");
-        });
-        button_1.setOnClickListener(v -> {
-            setNumInOperationClass("1");
-        });
-//        button_2.setOnClickListener(v -> {
-//            calculatorView.setText(calculatorView.getText() + "2");
-//            setNumInOperationClass();
-//        });
-//        button_3.setOnClickListener(v -> {
-//            calculatorView.setText(calculatorView.getText() + "3");
-//            setNumInOperationClass();
-//        });
-//        button_4.setOnClickListener(v -> {
-//            calculatorView.setText(calculatorView.getText() + "4");
-//            setNumInOperationClass();
-//        });
-//        button_5.setOnClickListener(v -> {
-//            calculatorView.setText(calculatorView.getText() + "5");
-//            setNumInOperationClass();
-//        });
-//        button_6.setOnClickListener(v -> {
-//            calculatorView.setText(calculatorView.getText() + "6");
-//            setNumInOperationClass();
-//        });
-//        button_7.setOnClickListener(v -> {
-//            calculatorView.setText(calculatorView.getText() + "7");
-//            setNumInOperationClass();
-//        });
-//        button_8.setOnClickListener(v -> {
-//            calculatorView.setText(calculatorView.getText() + "8");
-//            setNumInOperationClass();
-//        });
-//        button_9.setOnClickListener(v -> {
-//            calculatorView.setText(calculatorView.getText() + "9");
-//            setNumInOperationClass();
-//        });
+        button_0.setOnClickListener(v -> setNumInOperationClass("0"));
+        button_1.setOnClickListener(v -> setNumInOperationClass("1"));
+        button_2.setOnClickListener(v -> setNumInOperationClass("2"));
+        button_3.setOnClickListener(v -> setNumInOperationClass("3"));
+        button_4.setOnClickListener(v -> setNumInOperationClass("4"));
+        button_5.setOnClickListener(v -> setNumInOperationClass("5"));
+        button_6.setOnClickListener(v -> setNumInOperationClass("6"));
+        button_7.setOnClickListener(v -> setNumInOperationClass("7"));
+        button_8.setOnClickListener(v -> setNumInOperationClass("8"));
+        button_9.setOnClickListener(v -> setNumInOperationClass("9"));
     }
 
     private void initCalculator() {

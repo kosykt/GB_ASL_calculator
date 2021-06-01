@@ -40,18 +40,19 @@ public class Operation {
     }
 
     public String getAnswer() {
-        if (symbol.equals("+")) {
-            answer = Float.toString(Float.parseFloat(num1) + Float.parseFloat(num2));
-            return answer;
-        } else if (symbol.equals("-")) {
-            answer = Float.toString(Float.parseFloat(num1) - Float.parseFloat(num2));
-            return answer;
-        } else if (symbol.equals("*")) {
-            answer = Float.toString(Float.parseFloat(num1) * Float.parseFloat(num2));
-            return answer;
-        } else {
-            answer = Float.toString(Float.parseFloat(num1) / Float.parseFloat(num2));
-            return answer;
+        switch (symbol) {
+            case "+":
+                answer = Float.toString(Float.parseFloat(num1) + Float.parseFloat(num2));
+                return answer;
+            case "-":
+                answer = Float.toString(Float.parseFloat(num1) - Float.parseFloat(num2));
+                return answer;
+            case "*":
+                answer = Float.toString(Float.parseFloat(num1) * Float.parseFloat(num2));
+                return answer;
+            default:
+                answer = Float.toString(Float.parseFloat(num1) / Float.parseFloat(num2));
+                return answer;
         }
     }
 
