@@ -12,9 +12,11 @@ public class MainActivity extends AppCompatActivity {
 
     private Operation operation;
 
+    private Boolean clickMathOperation = false;
     private TextView calculatorView, saveNumView;
-    private String saveNum, saveMathOperation;
     private Button button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_dot, button_plus, button_minus, button_divide, button_multiply, button_clear, button_result;
+//    private final Button[] numButtonsArr = new Button[]{button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9};
+//    private final int[] numberButtonIds = new int[]{R.id.btn_0, R.id.btn_1, R.id.btn_2, R.id.btn_3, R.id.btn_4, R.id.btn_5, R.id.btn_6, R.id.btn_7, R.id.btn_8, R.id.btn_9};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,67 +30,105 @@ public class MainActivity extends AppCompatActivity {
         mathOperations();
     }
 
+    @SuppressLint("SetTextI18n")
     private void mathOperations() {
         button_plus.setOnClickListener((View v) -> {
-            saveNum = (String) calculatorView.getText();
-            saveNumView.setText(saveNum);
-            saveMathOperation = "+";
-            calculatorView.setText(null);
+            clickMathOperation = true;
+            operation.setSymbol("+");
+            calculatorView.setText(calculatorView.getText() + "+");
+            saveNumView.setText(operation.getSymbol());
         });
-        button_minus.setOnClickListener(v -> {
-            saveNum = (String) calculatorView.getText();
-            saveNumView.setText(saveNum);
-            saveMathOperation = "-";
-            calculatorView.setText(null);
+        button_minus.setOnClickListener((View v) -> {
+            clickMathOperation = true;
+            operation.setSymbol("-");
+            calculatorView.setText(calculatorView.getText() + "-");
+            saveNumView.setText(operation.getSymbol());
         });
-        button_divide.setOnClickListener(v -> {
-            saveNum = (String) calculatorView.getText();
-            saveNumView.setText(saveNum);
-            saveMathOperation = "/";
-            calculatorView.setText(null);
+        button_divide.setOnClickListener((View v) -> {
+            clickMathOperation = true;
+            operation.setSymbol("/");
+            calculatorView.setText(calculatorView.getText() + "/");
+            saveNumView.setText(operation.getSymbol());
         });
-        button_multiply.setOnClickListener(v -> {
-            saveNum = (String) calculatorView.getText();
-            saveNumView.setText(saveNum);
-            saveMathOperation = "*";
-            calculatorView.setText(null);
+        button_multiply.setOnClickListener((View v) -> {
+            clickMathOperation = true;
+            operation.setSymbol("*");
+            calculatorView.setText(calculatorView.getText() + "*");
+            saveNumView.setText(operation.getSymbol());
         });
-        button_clear.setOnClickListener(v -> {
-            saveNum = null;
-            saveNumView.setText(null);
-            saveMathOperation = null;
-            calculatorView.setText(null);
-        });
-        button_result.setOnClickListener(v -> {
-            if (saveMathOperation.equals("+")){
-                saveNumView.setText(operation.plusOp(saveNum, String.valueOf(calculatorView.getText())));
-            }
-            if (saveMathOperation.equals("-")){
-                saveNumView.setText(operation.minusOp(saveNum, String.valueOf(calculatorView.getText())));
-            }
-            if (saveMathOperation.equals("*")){
-                saveNumView.setText(operation.multiplyOp(saveNum, String.valueOf(calculatorView.getText())));
-            }
-            if (saveMathOperation.equals("/")){
-                saveNumView.setText(operation.divideOp(saveNum, String.valueOf(calculatorView.getText())));
-            }
-            calculatorView.setText(null);
-        });
+//        button_clear.setOnClickListener(v -> {
+//            saveNum = null;
+//            saveNumView.setText(null);
+//            saveMathOperation = null;
+//            calculatorView.setText(null);
+//        });
+//        button_result.setOnClickListener(v -> {
+//            if (saveMathOperation.equals("+")){
+//                saveNumView.setText(operation.plusOp(saveNum, String.valueOf(calculatorView.getText())));
+//            }
+//            if (saveMathOperation.equals("-")){
+//                saveNumView.setText(operation.minusOp(saveNum, String.valueOf(calculatorView.getText())));
+//            }
+//            if (saveMathOperation.equals("*")){
+//                saveNumView.setText(operation.multiplyOp(saveNum, String.valueOf(calculatorView.getText())));
+//            }
+//            if (saveMathOperation.equals("/")){
+//                saveNumView.setText(operation.divideOp(saveNum, String.valueOf(calculatorView.getText())));
+//            }
+//            calculatorView.setText(null);
+//        });
+    }
+
+    private void setNumInOperationClass(){
+        if (clickMathOperation.equals(false)){
+            operation.setNum1((String) calculatorView.getText());
+        } else {
+            operation.setNum2((String) calculatorView.getText());
+        }
     }
 
     @SuppressLint("SetTextI18n")
     private void setNumOnView() {
-        button_0.setOnClickListener(v -> calculatorView.setText(calculatorView.getText() + "0"));
-        button_1.setOnClickListener(v -> calculatorView.setText(calculatorView.getText() + "1"));
-        button_2.setOnClickListener(v -> calculatorView.setText(calculatorView.getText() + "2"));
-        button_3.setOnClickListener(v -> calculatorView.setText(calculatorView.getText() + "3"));
-        button_4.setOnClickListener(v -> calculatorView.setText(calculatorView.getText() + "4"));
-        button_5.setOnClickListener(v -> calculatorView.setText(calculatorView.getText() + "5"));
-        button_6.setOnClickListener(v -> calculatorView.setText(calculatorView.getText() + "6"));
-        button_7.setOnClickListener(v -> calculatorView.setText(calculatorView.getText() + "7"));
-        button_8.setOnClickListener(v -> calculatorView.setText(calculatorView.getText() + "8"));
-        button_9.setOnClickListener(v -> calculatorView.setText(calculatorView.getText() + "9"));
-        button_dot.setOnClickListener(v -> calculatorView.setText(calculatorView.getText() + "."));
+        button_0.setOnClickListener(v -> {
+            calculatorView.setText(calculatorView.getText() + "0");
+            setNumInOperationClass();
+        });
+        button_1.setOnClickListener(v -> {
+            calculatorView.setText(calculatorView.getText() + "1");
+            setNumInOperationClass();
+        });
+        button_2.setOnClickListener(v -> {
+            calculatorView.setText(calculatorView.getText() + "2");
+            setNumInOperationClass();
+        });
+        button_3.setOnClickListener(v -> {
+            calculatorView.setText(calculatorView.getText() + "3");
+            setNumInOperationClass();
+        });
+        button_4.setOnClickListener(v -> {
+            calculatorView.setText(calculatorView.getText() + "4");
+            setNumInOperationClass();
+        });
+        button_5.setOnClickListener(v -> {
+            calculatorView.setText(calculatorView.getText() + "5");
+            setNumInOperationClass();
+        });
+        button_6.setOnClickListener(v -> {
+            calculatorView.setText(calculatorView.getText() + "6");
+            setNumInOperationClass();
+        });
+        button_7.setOnClickListener(v -> {
+            calculatorView.setText(calculatorView.getText() + "7");
+            setNumInOperationClass();
+        });
+        button_8.setOnClickListener(v -> {
+            calculatorView.setText(calculatorView.getText() + "8");
+            setNumInOperationClass();
+        });
+        button_9.setOnClickListener(v -> {
+            calculatorView.setText(calculatorView.getText() + "9");
+            setNumInOperationClass();
+        });
     }
 
     private void initCalculator() {
