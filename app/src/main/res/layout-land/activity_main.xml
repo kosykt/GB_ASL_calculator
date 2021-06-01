@@ -26,8 +26,20 @@
         android:layout_marginRight="@dimen/margins_left_right"
         android:textColor="@color/black"
         android:textSize="@dimen/calculator_txt_size"
-        app:layout_constraintStart_toEndOf="@id/btn_c"
         app:layout_constraintBottom_toTopOf="@id/btn_8"
+        app:layout_constraintStart_toEndOf="@id/btn_c"
+        tools:text="example" />
+
+    <TextView
+        android:id="@+id/save_num_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margins_left_right"
+        android:layout_marginRight="@dimen/margins_left_right"
+        android:textColor="@color/black"
+        android:textSize="@dimen/calculator_txt_size"
+        app:layout_constraintBottom_toTopOf="@id/calculator_txt"
+        app:layout_constraintStart_toEndOf="@id/btn_c"
         tools:text="example" />
 
     <Button
@@ -188,7 +200,7 @@
         android:layout_marginRight="@dimen/margins_left_right"
         android:text="@string/btn_minus"
         android:textSize="@dimen/btn_txt_size"
-        app:layout_constraintBottom_toTopOf="@id/btn_sum"
+        app:layout_constraintBottom_toTopOf="@id/btn_plus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_3"
         app:layout_constraintTop_toBottomOf="@id/btn_multiply" />
@@ -229,12 +241,12 @@
         android:text="@string/btn_result"
         android:textSize="@dimen/btn_txt_size"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_sum"
+        app:layout_constraintEnd_toStartOf="@id/btn_plus"
         app:layout_constraintStart_toEndOf="@id/btn_0"
         app:layout_constraintTop_toBottomOf="@id/btn_3" />
 
     <Button
-        android:id="@+id/btn_sum"
+        android:id="@+id/btn_plus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margins_left_right"
