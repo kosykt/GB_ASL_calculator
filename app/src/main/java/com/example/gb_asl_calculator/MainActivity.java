@@ -4,16 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView calculatorView;
-    private TextView saveNumView;
-    private String saveNum;
-    private String saveMathOperation;
-    private Button button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_plus, button_minus, button_divide, button_multiply, button_dot, button_clear, button_result;
+    private TextView calculatorView, saveNumView;
+    private String saveNum, saveMathOperation;
+    private Button button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_dot, button_plus, button_minus, button_divide, button_multiply, button_clear, button_result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void mathOperations() {
-        button_plus.setOnClickListener(v -> {
+        button_plus.setOnClickListener((View v) -> {
             saveNum = (String) calculatorView.getText();
             saveNumView.setText(saveNum);
             saveMathOperation = "+";
