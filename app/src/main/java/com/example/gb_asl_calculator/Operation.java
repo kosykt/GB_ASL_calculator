@@ -6,12 +6,21 @@ public class Operation {
     private String num2;
     private String answer;
     private String symbol;
+    private Boolean clickMathOperation = false;
 
     public Operation() {
         this.num1 = null;
         this.num2 = null;
         this.answer = null;
         this.symbol = null;
+    }
+
+    public Boolean getClickMathOperation() {
+        return clickMathOperation;
+    }
+
+    public void setClickMathOperation(Boolean clickMathOperation) {
+        this.clickMathOperation = clickMathOperation;
     }
 
     public String getNum1() {
@@ -31,10 +40,18 @@ public class Operation {
     }
 
     public String getAnswer() {
-        if (symbol.equals("+")){
-            return "+";
-        }else {
-            return "";
+        if (symbol.equals("+")) {
+            answer = Float.toString(Float.parseFloat(num1) + Float.parseFloat(num2));
+            return answer;
+        } else if (symbol.equals("-")) {
+            answer = Float.toString(Float.parseFloat(num1) - Float.parseFloat(num2));
+            return answer;
+        } else if (symbol.equals("*")) {
+            answer = Float.toString(Float.parseFloat(num1) * Float.parseFloat(num2));
+            return answer;
+        } else {
+            answer = Float.toString(Float.parseFloat(num1) / Float.parseFloat(num2));
+            return answer;
         }
     }
 
@@ -49,20 +66,4 @@ public class Operation {
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
-
-//    public String plusOp (String n1, String n2){
-//        return Float.toString(Float.parseFloat(n1) + Float.parseFloat(n2));
-//    }
-//
-//    public String minusOp (String n1, String n2){
-//        return Float.toString(Float.parseFloat(n1) - Float.parseFloat(n2));
-//    }
-//
-//    public String multiplyOp (String n1, String n2){
-//        return Float.toString(Float.parseFloat(n1) * Float.parseFloat(n2));
-//    }
-//
-//    public String divideOp (String n1, String n2){
-//        return Float.toString(Float.parseFloat(n1) / Float.parseFloat(n2));
-//    }
 }

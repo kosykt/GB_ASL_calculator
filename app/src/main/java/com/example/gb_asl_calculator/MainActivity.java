@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Operation operation;
 
-    private Boolean clickMathOperation = false;
+
     private TextView calculatorView, saveNumView;
     private Button button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_dot, button_plus, button_minus, button_divide, button_multiply, button_clear, button_result;
 //    private final Button[] numButtonsArr = new Button[]{button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9};
@@ -33,24 +33,40 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     private void mathOperations() {
         button_plus.setOnClickListener((View v) -> {
-            clickMathOperation = true;
-            operation.setSymbol("+");
-            calculatorView.setText(calculatorView.getText() + "+");
+            if (operation.getClickMathOperation().equals(true)) {
+
+            } else {
+                operation.setClickMathOperation(true);
+                operation.setSymbol("+");
+                calculatorView.setText(calculatorView.getText() + "+");
+            }
         });
         button_minus.setOnClickListener((View v) -> {
-            clickMathOperation = true;
-            operation.setSymbol("-");
-            calculatorView.setText(calculatorView.getText() + "-");
+            if (operation.getClickMathOperation().equals(true)) {
+
+            } else {
+                operation.setClickMathOperation(true);
+                operation.setSymbol("-");
+                calculatorView.setText(calculatorView.getText() + "-");
+            }
         });
         button_divide.setOnClickListener((View v) -> {
-            clickMathOperation = true;
-            operation.setSymbol("/");
-            calculatorView.setText(calculatorView.getText() + "/");
+            if (operation.getClickMathOperation().equals(true)) {
+
+            } else {
+                operation.setClickMathOperation(true);
+                operation.setSymbol("/");
+                calculatorView.setText(calculatorView.getText() + "/");
+            }
         });
         button_multiply.setOnClickListener((View v) -> {
-            clickMathOperation = true;
-            operation.setSymbol("*");
-            calculatorView.setText(calculatorView.getText() + "*");
+            if (operation.getClickMathOperation().equals(true)) {
+
+            } else {
+                operation.setClickMathOperation(true);
+                operation.setSymbol("*");
+                calculatorView.setText(calculatorView.getText() + "*");
+            }
         });
         button_clear.setOnClickListener(v -> {
             saveNumView.setText(null);
@@ -59,32 +75,19 @@ public class MainActivity extends AppCompatActivity {
             operation.setNum1(null);
             operation.setNum2(null);
             operation.setAnswer(null);
+            operation.setClickMathOperation(false);
         });
         button_result.setOnClickListener(v -> {
             saveNumView.setText(operation.getAnswer());
         });
-//        button_result.setOnClickListener(v -> {
-//            if (saveMathOperation.equals("+")){
-//                saveNumView.setText(operation.plusOp(saveNum, String.valueOf(calculatorView.getText())));
-//            }
-//            if (saveMathOperation.equals("-")){
-//                saveNumView.setText(operation.minusOp(saveNum, String.valueOf(calculatorView.getText())));
-//            }
-//            if (saveMathOperation.equals("*")){
-//                saveNumView.setText(operation.multiplyOp(saveNum, String.valueOf(calculatorView.getText())));
-//            }
-//            if (saveMathOperation.equals("/")){
-//                saveNumView.setText(operation.divideOp(saveNum, String.valueOf(calculatorView.getText())));
-//            }
-//            calculatorView.setText(null);
-//        });
     }
 
-    private void setNumInOperationClass(){
-        if (clickMathOperation.equals(false)){
+    private void setNumInOperationClass() {
+        if (operation.getClickMathOperation().equals(false)) {
             operation.setNum1((String) calculatorView.getText());
         } else {
-            operation.setNum2((String) calculatorView.getText());
+            //TODO ошибка начинается здесь
+            operation.setNum2("2");
         }
     }
 
