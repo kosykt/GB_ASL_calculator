@@ -12,8 +12,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Operation operation;
 
-    private TextView calculatorView, saveNumView;
-    private String subText;
+    private TextView calculatorView, secondCalculatorView;
+    private String reserveText;
     private Button button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_dot, button_plus, button_minus, button_divide, button_multiply, button_clear, button_result;
 
     @Override
@@ -24,11 +24,13 @@ public class MainActivity extends AppCompatActivity {
         operation = new Operation();
 
         initCalculator();
+        setNumOnView();
+        mathOperations();
     }
 
     private void initCalculator() {
         calculatorView = findViewById(R.id.calculator_txt);
-        saveNumView = findViewById(R.id.save_num_txt);
+        secondCalculatorView = findViewById(R.id.save_num_txt);
         button_0 = findViewById(R.id.btn_0);
         button_1 = findViewById(R.id.btn_1);
         button_2 = findViewById(R.id.btn_2);
@@ -46,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         button_dot = findViewById(R.id.btn_dot);
         button_clear = findViewById(R.id.btn_c);
         button_result = findViewById(R.id.btn_result);
-        setNumOnView();
     }
 
     private void setNumOnView() {
@@ -60,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         button_7.setOnClickListener(v -> setNumInOperationClass("7"));
         button_8.setOnClickListener(v -> setNumInOperationClass("8"));
         button_9.setOnClickListener(v -> setNumInOperationClass("9"));
-        mathOperations();
     }
 
     @SuppressLint("SetTextI18n")
@@ -70,12 +70,12 @@ public class MainActivity extends AppCompatActivity {
             operation.setNum1((String) calculatorView.getText());
         } else {
             calculatorView.setText(calculatorView.getText() + s);
-            if (subText == null) {
-                subText = s;
+            if (reserveText == null) {
+                reserveText = s;
             } else {
-                subText = subText + s;
+                reserveText = reserveText + s;
             }
-            operation.setNum2(subText);
+            operation.setNum2(reserveText);
         }
     }
 
@@ -86,30 +86,41 @@ public class MainActivity extends AppCompatActivity {
         button_divide.setOnClickListener((View v) -> mathOperationLogic("/"));
         button_result.setOnClickListener(v -> resultOperation());
         button_clear.setOnClickListener(v -> {
-            saveNumView.setText(null);
-            calculatorView.setText(null);
-            subText = null;
-            operation.setSymbol(null);
-            operation.setNum1(null);
-            operation.setNum2(null);
-            operation.setAnswer(null);
-            operation.setClickMathOperation(false);
+            secondCalculatorView.setText(null);
+            clearOp();
         });
     }
 
     @SuppressLint("SetTextI18n")
     private void mathOperationLogic(String s) {
-        if (operation.getClickMathOperation().equals(true)) {
-            resultOperation();
+//        if (!operation.getClickMathOperation()){
+//
+//        }
+        if (calculatorView.getText().equals("")){
+            calculatorView.setText("");
         } else {
-            operation.setClickMathOperation(true);
+            if (operation.getClickMathOperation()) {
+                resultOperation();
+            }else {
+                operation.setClickMathOperation(true);
+            }
+            calculatorView.setText(calculatorView.getText() + s);
+            operation.setSymbol(s);
         }
-        calculatorView.setText(calculatorView.getText() + s);
-        operation.setSymbol(s);
     }
 
     private void resultOperation() {
-        calculatorView.setText(operation.getAnswer());
-        subText = null;
+        secondCalculatorView.setText(operation.getAnswer());
+        clearOp();
+    }
+
+    private void clearOp() {
+        calculatorView.setText(null);
+        reserveText = null;
+        operation.setSymbol(null);
+        operation.setNum1(null);
+        operation.setNum2(null);
+        operation.setAnswer(null);
+        operation.setClickMathOperation(false);
     }
 }
