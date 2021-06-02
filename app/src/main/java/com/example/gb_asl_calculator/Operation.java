@@ -1,6 +1,9 @@
 package com.example.gb_asl_calculator;
 
-public class Operation {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Operation implements Parcelable {
 
     private String num1;
     private String num2;
@@ -8,6 +11,31 @@ public class Operation {
     private String symbol;
     private Boolean clickMathOperation = false;
     private Boolean canTouchOpButton = false;
+
+    protected Operation(Parcel in) {
+        num1 = in.readString();
+        num2 = in.readString();
+        answer = in.readString();
+        symbol = in.readString();
+        byte tmpClickMathOperation = in.readByte();
+        clickMathOperation = tmpClickMathOperation == 0 ? null : tmpClickMathOperation == 1;
+        byte tmpCanTouchOpButton = in.readByte();
+        canTouchOpButton = tmpCanTouchOpButton == 0 ? null : tmpCanTouchOpButton == 1;
+        byte tmpCanTouchDotButton = in.readByte();
+        canTouchDotButton = tmpCanTouchDotButton == 0 ? null : tmpCanTouchDotButton == 1;
+    }
+
+    public static final Creator<Operation> CREATOR = new Creator<Operation>() {
+        @Override
+        public Operation createFromParcel(Parcel in) {
+            return new Operation(in);
+        }
+
+        @Override
+        public Operation[] newArray(int size) {
+            return new Operation[size];
+        }
+    };
 
     public Boolean getCanTouchDotButton() {
         return canTouchDotButton;
@@ -108,5 +136,21 @@ public class Operation {
 
     public void setSymbol(String symbol) {
         this.symbol = symbol;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(num1);
+        dest.writeString(num2);
+        dest.writeString(answer);
+        dest.writeString(symbol);
+        dest.writeByte((byte) (clickMathOperation == null ? 0 : clickMathOperation ? 1 : 2));
+        dest.writeByte((byte) (canTouchOpButton == null ? 0 : canTouchOpButton ? 1 : 2));
+        dest.writeByte((byte) (canTouchDotButton == null ? 0 : canTouchDotButton ? 1 : 2));
     }
 }

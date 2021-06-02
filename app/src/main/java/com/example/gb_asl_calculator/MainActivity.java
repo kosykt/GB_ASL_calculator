@@ -1,5 +1,6 @@
 package com.example.gb_asl_calculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private Operation operation;
+
+    private final static String keyCounters = "Counters";
 
     private TextView calculatorView, secondCalculatorView;
     private String reserveText;
@@ -119,4 +122,22 @@ public class MainActivity extends AppCompatActivity {
         operation.setAnswer(null);
         operation.setClickMathOperation(false);
     }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle instanceState) {
+        super.onSaveInstanceState(instanceState);
+        instanceState.putParcelable(keyCounters, operation);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle instanceState) {
+        super.onRestoreInstanceState(instanceState);
+        operation = (Operation) instanceState.getParcelable(keyCounters);
+        setTextCounters();
+    }
+
+    private void setTextCounters(){
+//        TODO закончить
+    }
+
 }
