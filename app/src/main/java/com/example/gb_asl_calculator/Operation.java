@@ -7,6 +7,25 @@ public class Operation {
     private String answer;
     private String symbol;
     private Boolean clickMathOperation = false;
+    private Boolean canTouchOpButton = false;
+
+    public Boolean getCanTouchDotButton() {
+        return canTouchDotButton;
+    }
+
+    public void setCanTouchDotButton(Boolean canTouchDotButton) {
+        this.canTouchDotButton = canTouchDotButton;
+    }
+
+    private Boolean canTouchDotButton = false;
+
+    public Boolean getCanTouchOpButton() {
+        return canTouchOpButton;
+    }
+
+    public void setCanTouchOpButton(Boolean canTouchOpButton) {
+        this.canTouchOpButton = canTouchOpButton;
+    }
 
     public Operation() {
         this.num1 = null;
@@ -41,40 +60,40 @@ public class Operation {
 
     public String getAnswer() {
         if (symbol == null) {
-            return "нет оператора";
+            return "Введите выражение";
         }
         switch (symbol) {
             case "+":
-                if (num1 != null && num2 != null) {
+                if (num2 != null) {
                     answer = Float.toString(Float.parseFloat(num1) + Float.parseFloat(num2));
                     symbol = null;
                     return answer;
                 } else {
-                    return "Нет чисел";
+                    return "Отсутсвует \nвторое число";
                 }
             case "-":
-                if (num1 != null && num2 != null) {
+                if (num2 != null) {
                     answer = Float.toString(Float.parseFloat(num1) - Float.parseFloat(num2));
                     symbol = null;
                     return answer;
                 } else {
-                    return "Нет чисел";
+                    return "Отсутсвует \nвторое число";
                 }
             case "*":
-                if (num1 != null && num2 != null) {
+                if (num2 != null) {
                     answer = Float.toString(Float.parseFloat(num1) * Float.parseFloat(num2));
                     symbol = null;
                     return answer;
                 } else {
-                    return "Нет чисел";
+                    return "Отсутсвует \nвторое число";
                 }
             default:
-                if (num1 != null && num2 != null) {
+                if (num2 != null) {
                     answer = Float.toString(Float.parseFloat(num1) / Float.parseFloat(num2));
                     symbol = null;
                     return answer;
                 } else {
-                    return "Нет чисел";
+                    return "Отсутсвует \nвторое число";
                 }
         }
     }

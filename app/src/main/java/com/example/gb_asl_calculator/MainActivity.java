@@ -65,47 +65,43 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void setNumInOperationClass(String s) {
-        if (operation.getClickMathOperation().equals(false)) {
+        if (operation.getClickMathOperation()){
             calculatorView.setText(calculatorView.getText() + s);
-            operation.setNum1((String) calculatorView.getText());
-        } else {
-            calculatorView.setText(calculatorView.getText() + s);
-            if (reserveText == null) {
+            if (reserveText == null){
                 reserveText = s;
-            } else {
+            }else {
                 reserveText = reserveText + s;
             }
             operation.setNum2(reserveText);
         }
+        if (!operation.getClickMathOperation()){
+            calculatorView.setText(calculatorView.getText() + s);
+            operation.setNum1((String) calculatorView.getText());
+            operation.setCanTouchOpButton(true);
+        }
     }
 
     private void mathOperations() {
-        button_plus.setOnClickListener((View v) -> mathOperationLogic("+"));
-        button_minus.setOnClickListener((View v) -> mathOperationLogic("-"));
-        button_multiply.setOnClickListener((View v) -> mathOperationLogic("*"));
-        button_divide.setOnClickListener((View v) -> mathOperationLogic("/"));
+        button_plus.setOnClickListener(v -> mathOperationLogic("+"));
+        button_minus.setOnClickListener(v -> mathOperationLogic("-"));
+        button_multiply.setOnClickListener(v -> mathOperationLogic("*"));
+        button_divide.setOnClickListener(v -> mathOperationLogic("/"));
         button_result.setOnClickListener(v -> resultOperation());
         button_clear.setOnClickListener(v -> {
-            secondCalculatorView.setText(null);
             clearOp();
+            secondCalculatorView.setText(null);
         });
     }
 
     @SuppressLint("SetTextI18n")
     private void mathOperationLogic(String s) {
-//        if (!operation.getClickMathOperation()){
-//
-//        }
-        if (calculatorView.getText().equals("")){
-            calculatorView.setText("");
-        } else {
-            if (operation.getClickMathOperation()) {
-                resultOperation();
-            }else {
-                operation.setClickMathOperation(true);
-            }
+        if (operation.getCanTouchOpButton()){
             calculatorView.setText(calculatorView.getText() + s);
             operation.setSymbol(s);
+            operation.setClickMathOperation(true);
+            operation.setCanTouchOpButton(false);
+        }else {
+            resultOperation();
         }
     }
 
