@@ -29,18 +29,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void mathOperations() {
-        button_plus.setOnClickListener((View v) -> {
-            mathOperationLogic("+");
-        });
-        button_minus.setOnClickListener((View v) -> {
-            mathOperationLogic("-");
-        });
-        button_multiply.setOnClickListener((View v) -> {
-            mathOperationLogic("*");
-        });
-        button_divide.setOnClickListener((View v) -> {
-            mathOperationLogic("/");
-        });
+        button_plus.setOnClickListener((View v) -> mathOperationLogic("+"));
+        button_minus.setOnClickListener((View v) -> mathOperationLogic("-"));
+        button_multiply.setOnClickListener((View v) -> mathOperationLogic("*"));
+        button_divide.setOnClickListener((View v) -> mathOperationLogic("/"));
+        button_result.setOnClickListener(v -> resultOperation());
         button_clear.setOnClickListener(v -> {
             saveNumView.setText(null);
             calculatorView.setText(null);
@@ -51,22 +44,17 @@ public class MainActivity extends AppCompatActivity {
             operation.setAnswer(null);
             operation.setClickMathOperation(false);
         });
-        button_result.setOnClickListener(v -> {
-            resultOperation();
-        });
     }
 
     @SuppressLint("SetTextI18n")
     private void mathOperationLogic(String s) {
         if (operation.getClickMathOperation().equals(true)) {
             resultOperation();
-            calculatorView.setText(calculatorView.getText() + s);
-            operation.setSymbol(s);
         } else {
             operation.setClickMathOperation(true);
-            operation.setSymbol(s);
-            calculatorView.setText(calculatorView.getText() + s);
         }
+        calculatorView.setText(calculatorView.getText() + s);
+        operation.setSymbol(s);
     }
 
     private void resultOperation() {
