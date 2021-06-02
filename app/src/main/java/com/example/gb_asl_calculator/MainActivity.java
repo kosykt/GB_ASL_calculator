@@ -28,43 +28,18 @@ public class MainActivity extends AppCompatActivity {
         mathOperations();
     }
 
-    @SuppressLint("SetTextI18n")
     private void mathOperations() {
         button_plus.setOnClickListener((View v) -> {
-            if (operation.getClickMathOperation().equals(true)) {
-
-            } else {
-                operation.setClickMathOperation(true);
-                operation.setSymbol("+");
-                calculatorView.setText(calculatorView.getText() + "+");
-            }
+            mathOperationLogic("+");
         });
         button_minus.setOnClickListener((View v) -> {
-            if (operation.getClickMathOperation().equals(true)) {
-
-            } else {
-                operation.setClickMathOperation(true);
-                operation.setSymbol("-");
-                calculatorView.setText(calculatorView.getText() + "-");
-            }
-        });
-        button_divide.setOnClickListener((View v) -> {
-            if (operation.getClickMathOperation().equals(true)) {
-
-            } else {
-                operation.setClickMathOperation(true);
-                operation.setSymbol("/");
-                calculatorView.setText(calculatorView.getText() + "/");
-            }
+            mathOperationLogic("-");
         });
         button_multiply.setOnClickListener((View v) -> {
-            if (operation.getClickMathOperation().equals(true)) {
-
-            } else {
-                operation.setClickMathOperation(true);
-                operation.setSymbol("*");
-                calculatorView.setText(calculatorView.getText() + "*");
-            }
+            mathOperationLogic("*");
+        });
+        button_divide.setOnClickListener((View v) -> {
+            mathOperationLogic("/");
         });
         button_clear.setOnClickListener(v -> {
             saveNumView.setText(null);
@@ -77,11 +52,28 @@ public class MainActivity extends AppCompatActivity {
             operation.setClickMathOperation(false);
         });
         button_result.setOnClickListener(v -> {
-            calculatorView.setText(operation.getAnswer());
-            subText = null;
-            operation.setClickMathOperation(false);
+            resultOperation();
         });
     }
+
+    @SuppressLint("SetTextI18n")
+    private void mathOperationLogic(String s) {
+        if (operation.getClickMathOperation().equals(true)) {
+            resultOperation();
+            calculatorView.setText(calculatorView.getText() + s);
+            operation.setSymbol(s);
+        } else {
+            operation.setClickMathOperation(true);
+            operation.setSymbol(s);
+            calculatorView.setText(calculatorView.getText() + s);
+        }
+    }
+
+    private void resultOperation() {
+        calculatorView.setText(operation.getAnswer());
+        subText = null;
+    }
+
 
     @SuppressLint("SetTextI18n")
     private void setNumInOperationClass(String s) {

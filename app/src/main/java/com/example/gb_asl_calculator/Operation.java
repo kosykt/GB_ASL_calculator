@@ -40,19 +40,42 @@ public class Operation {
     }
 
     public String getAnswer() {
+        if (symbol == null){
+            return "нет оператора";
+        }
         switch (symbol) {
             case "+":
-                answer = Float.toString(Float.parseFloat(num1) + Float.parseFloat(num2));
-                return answer;
+                if (num1 != null && num2 != null){
+                    answer = Float.toString(Float.parseFloat(num1) + Float.parseFloat(num2));
+                    symbol = null;
+                    return answer;
+                } else {
+                    return "Нет чисел";
+                }
             case "-":
-                answer = Float.toString(Float.parseFloat(num1) - Float.parseFloat(num2));
-                return answer;
+                if (num1 != null && num2 != null){
+                    answer = Float.toString(Float.parseFloat(num1) - Float.parseFloat(num2));
+                    symbol = null;
+                    return answer;
+                } else {
+                    return "Нет чисел";
+                }
             case "*":
-                answer = Float.toString(Float.parseFloat(num1) * Float.parseFloat(num2));
-                return answer;
+                if (num1 != null && num2 != null){
+                    answer = Float.toString(Float.parseFloat(num1) * Float.parseFloat(num2));
+                    symbol = null;
+                    return answer;
+                } else {
+                    return "Нет чисел";
+                }
             default:
-                answer = Float.toString(Float.parseFloat(num1) / Float.parseFloat(num2));
-                return answer;
+                if (num1 != null && num2 != null){
+                    answer = Float.toString(Float.parseFloat(num1) / Float.parseFloat(num2));
+                    symbol = null;
+                    return answer;
+                } else {
+                    return "Нет чисел";
+                }
         }
     }
 
