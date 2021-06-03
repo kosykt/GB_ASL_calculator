@@ -47,21 +47,21 @@ public class MainActivity extends AppCompatActivity {
         button_result = findViewById(R.id.btn_result);
     }
     private void clickBtn() {
-        button_0.setOnClickListener(v -> setBtnText("0"));
-        button_1.setOnClickListener(v -> setBtnText("1"));
-        button_2.setOnClickListener(v -> setBtnText("2"));
-        button_3.setOnClickListener(v -> setBtnText("3"));
-        button_4.setOnClickListener(v -> setBtnText("4"));
-        button_5.setOnClickListener(v -> setBtnText("5"));
-        button_6.setOnClickListener(v -> setBtnText("6"));
-        button_7.setOnClickListener(v -> setBtnText("7"));
-        button_8.setOnClickListener(v -> setBtnText("8"));
-        button_9.setOnClickListener(v -> setBtnText("9"));
-        button_dot.setOnClickListener(v -> setBtnText("."));
-        button_plus.setOnClickListener(v -> setBtnText("+"));
-        button_minus.setOnClickListener(v -> setBtnText("-"));
-        button_multiply.setOnClickListener(v -> setBtnText("*"));
-        button_divide.setOnClickListener(v -> setBtnText("/"));
+        button_0.setOnClickListener(v -> numBtnText("0"));
+        button_1.setOnClickListener(v -> numBtnText("1"));
+        button_2.setOnClickListener(v -> numBtnText("2"));
+        button_3.setOnClickListener(v -> numBtnText("3"));
+        button_4.setOnClickListener(v -> numBtnText("4"));
+        button_5.setOnClickListener(v -> numBtnText("5"));
+        button_6.setOnClickListener(v -> numBtnText("6"));
+        button_7.setOnClickListener(v -> numBtnText("7"));
+        button_8.setOnClickListener(v -> numBtnText("8"));
+        button_9.setOnClickListener(v -> numBtnText("9"));
+        button_dot.setOnClickListener(v -> numBtnText("."));
+        button_plus.setOnClickListener(v -> opBtnText("+"));
+        button_minus.setOnClickListener(v -> opBtnText("-"));
+        button_multiply.setOnClickListener(v -> opBtnText("*"));
+        button_divide.setOnClickListener(v -> opBtnText("/"));
         button_result.setOnClickListener(v -> answer());
         button_clear.setOnClickListener(v -> {
             clear();
@@ -81,7 +81,12 @@ public class MainActivity extends AppCompatActivity {
         secondCalculatorView.setText(answerText.append(operation.getAnswer()));
     }
 
-    private void setBtnText(String s) {
+    private void numBtnText(String s) {
+        calculatorView.setText(numbersText.append(s));
+        operation.setNum1(Double.valueOf(s));
+    }
+
+    private void opBtnText (String s){
         calculatorView.setText(numbersText.append(s));
         operation.setOperator(s);
     }

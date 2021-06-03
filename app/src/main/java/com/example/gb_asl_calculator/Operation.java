@@ -5,6 +5,8 @@ public class Operation {
     private Double num1 = 6.0;
     private Double num2 = 2.0;
     private String operator = "";
+    private Boolean touchNumBtn = false;
+    private Boolean touchOperatorBtn = false;
 
     public Operation() {
     }
@@ -20,7 +22,7 @@ public class Operation {
             case "*":
                 return num1 * num2;
             default:
-                return 1.010;
+                return 1.0101;
         }
     }
 
