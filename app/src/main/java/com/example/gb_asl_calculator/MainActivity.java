@@ -1,9 +1,7 @@
 package com.example.gb_asl_calculator;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,11 +10,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private Operation operation;
-
-    private final static String keyCounters = "Counters";
-
     private TextView calculatorView, secondCalculatorView;
-    private String reserveText;
+    private StringBuffer reserveText = new StringBuffer("");
     private Button button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_dot, button_plus, button_minus, button_divide, button_multiply, button_clear, button_result;
 
     @Override
@@ -26,12 +21,11 @@ public class MainActivity extends AppCompatActivity {
 
         operation = new Operation();
 
-        initCalculator();
-        setNumOnView();
-        mathOperations();
+        initIdBtn();
+        clickBtn();
     }
 
-    private void initCalculator() {
+    private void initIdBtn() {
         calculatorView = findViewById(R.id.calculator_txt);
         secondCalculatorView = findViewById(R.id.save_num_txt);
         button_0 = findViewById(R.id.btn_0);
@@ -52,92 +46,44 @@ public class MainActivity extends AppCompatActivity {
         button_clear = findViewById(R.id.btn_c);
         button_result = findViewById(R.id.btn_result);
     }
-
-    private void setNumOnView() {
-        button_0.setOnClickListener(v -> setNumInOperationClass("0"));
-        button_1.setOnClickListener(v -> setNumInOperationClass("1"));
-        button_2.setOnClickListener(v -> setNumInOperationClass("2"));
-        button_3.setOnClickListener(v -> setNumInOperationClass("3"));
-        button_4.setOnClickListener(v -> setNumInOperationClass("4"));
-        button_5.setOnClickListener(v -> setNumInOperationClass("5"));
-        button_6.setOnClickListener(v -> setNumInOperationClass("6"));
-        button_7.setOnClickListener(v -> setNumInOperationClass("7"));
-        button_8.setOnClickListener(v -> setNumInOperationClass("8"));
-        button_9.setOnClickListener(v -> setNumInOperationClass("9"));
-    }
-
-    @SuppressLint("SetTextI18n")
-    private void setNumInOperationClass(String s) {
-        if (operation.getClickMathOperation()){
-            calculatorView.setText(calculatorView.getText() + s);
-            if (reserveText == null){
-                reserveText = s;
-            }else {
-                reserveText = reserveText + s;
-            }
-            operation.setNum2(reserveText);
-        }
-        if (!operation.getClickMathOperation()){
-            calculatorView.setText(calculatorView.getText() + s);
-            operation.setNum1((String) calculatorView.getText());
-            operation.setCanTouchOpButton(true);
-        }
-    }
-
-    private void mathOperations() {
-        button_plus.setOnClickListener(v -> mathOperationLogic("+"));
-        button_minus.setOnClickListener(v -> mathOperationLogic("-"));
-        button_multiply.setOnClickListener(v -> mathOperationLogic("*"));
-        button_divide.setOnClickListener(v -> mathOperationLogic("/"));
-        button_result.setOnClickListener(v -> resultOperation());
+    private void clickBtn() {
+        button_0.setOnClickListener(v -> setBtnText("0"));
+        button_1.setOnClickListener(v -> setBtnText("1"));
+        button_2.setOnClickListener(v -> setBtnText("2"));
+        button_3.setOnClickListener(v -> setBtnText("3"));
+        button_4.setOnClickListener(v -> setBtnText("4"));
+        button_5.setOnClickListener(v -> setBtnText("5"));
+        button_6.setOnClickListener(v -> setBtnText("6"));
+        button_7.setOnClickListener(v -> setBtnText("7"));
+        button_8.setOnClickListener(v -> setBtnText("8"));
+        button_9.setOnClickListener(v -> setBtnText("9"));
+        button_dot.setOnClickListener(v -> setBtnText("."));
+        button_plus.setOnClickListener(v -> setBtnText("+"));
+        button_minus.setOnClickListener(v -> setBtnText("-"));
+        button_multiply.setOnClickListener(v -> setBtnText("*"));
+        button_divide.setOnClickListener(v -> setBtnText("/"));
+        button_result.setOnClickListener(v -> answer());
         button_clear.setOnClickListener(v -> {
-            clearOp();
-            secondCalculatorView.setText(null);
+            clear();
         });
     }
 
-    @SuppressLint("SetTextI18n")
-    private void mathOperationLogic(String s) {
-        if (operation.getCanTouchOpButton()){
-            calculatorView.setText(calculatorView.getText() + s);
-            operation.setSymbol(s);
-            operation.setClickMathOperation(true);
-            operation.setCanTouchOpButton(false);
-        }else {
-            resultOperation();
-        }
-    }
-
-    private void resultOperation() {
-        secondCalculatorView.setText(operation.getAnswer());
-        clearOp();
-    }
-
-    private void clearOp() {
-        calculatorView.setText(null);
-        reserveText = null;
-        operation.setSymbol(null);
-        operation.setNum1(null);
-        operation.setNum2(null);
+    private void clear() {
+        calculatorView.setText("");
+        secondCalculatorView.setText("");
+        reserveText = new StringBuffer("");
+        operation.setNum(null);
         operation.setAnswer(null);
-        operation.setClickMathOperation(false);
     }
 
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle instanceState) {
-        super.onSaveInstanceState(instanceState);
-        instanceState.putParcelable(keyCounters, operation);
+    private void answer() {
+        operation.setNum(reserveText);
+        clear();
+        secondCalculatorView.setText(reserveText.append(operation.getAnswer()));
     }
 
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle instanceState) {
-        super.onRestoreInstanceState(instanceState);
-        operation = (Operation) instanceState.getParcelable(keyCounters);
-        setTextCounters();
+    private void setBtnText(String s) {
+        reserveText.append(s);
+        calculatorView.setText(reserveText);
     }
-
-    private void setTextCounters(){
-//        TODO закончить
-    }
-
 }
