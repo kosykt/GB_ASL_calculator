@@ -2,22 +2,29 @@ package com.example.gb_asl_calculator;
 
 public class Operation {
 
-    private StringBuffer num;
-    private Double answer;
-
-    public StringBuffer getNum() {
-        return num;
-    }
-
-    public void setNum(StringBuffer num) {
-        this.num = num;
-    }
+    private Double answer = 0.0;
 
     public double getAnswer() {
-        return 1.0;
+        return answer;
     }
 
     public void setAnswer(Double answer) {
         this.answer = answer;
+    }
+
+    public void plusOp (Double n){
+        answer += n;
+    }
+
+    public void minusOp (Double n){
+        answer -= n;
+    }
+
+    public void divideOp (Double n){
+        answer /= n;
+    }
+
+    public void multiplyOp (Double n){
+        answer *= n;
     }
 }

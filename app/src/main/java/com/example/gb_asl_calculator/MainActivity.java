@@ -3,7 +3,6 @@ package com.example.gb_asl_calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -11,7 +10,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Operation operation;
     private TextView calculatorView, secondCalculatorView;
-    private StringBuffer reserveText = new StringBuffer("");
+    private StringBuffer reserveText = new StringBuffer();
     private Button button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_dot, button_plus, button_minus, button_divide, button_multiply, button_clear, button_result;
 
     @Override
@@ -63,21 +62,16 @@ public class MainActivity extends AppCompatActivity {
         button_multiply.setOnClickListener(v -> setBtnText("*"));
         button_divide.setOnClickListener(v -> setBtnText("/"));
         button_result.setOnClickListener(v -> answer());
-        button_clear.setOnClickListener(v -> {
-            clear();
-        });
+        button_clear.setOnClickListener(v -> clear());
     }
 
     private void clear() {
         calculatorView.setText("");
         secondCalculatorView.setText("");
-        reserveText = new StringBuffer("");
-        operation.setNum(null);
-        operation.setAnswer(null);
+        reserveText = new StringBuffer();
     }
 
     private void answer() {
-        operation.setNum(reserveText);
         clear();
         secondCalculatorView.setText(reserveText.append(operation.getAnswer()));
     }
