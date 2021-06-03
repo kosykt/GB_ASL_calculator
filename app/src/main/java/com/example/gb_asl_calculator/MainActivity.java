@@ -64,30 +64,42 @@ public class MainActivity extends AppCompatActivity {
         button_divide.setOnClickListener(v -> opBtnText("/"));
         button_result.setOnClickListener(v -> answer());
         button_clear.setOnClickListener(v -> {
-            clear();
+            calculatorView.setText("");
+            secondCalculatorView.setText("");
             operation.setOperator("");
+            operation.setNum1(0.0);
+            operation.setNum2(0.0);
+            operation.setTouchOperatorBtn(false);
+            operation.setTouchNumBtn(false);
+            numbersText = new StringBuffer();
+            answerText = new StringBuffer();
         });
     }
 
     private void clear() {
         calculatorView.setText("");
-        secondCalculatorView.setText("");
         numbersText = new StringBuffer();
         answerText = new StringBuffer();
+
     }
 
     private void answer() {
-        clear();
         secondCalculatorView.setText(answerText.append(operation.getAnswer()));
+
     }
 
     private void numBtnText(String s) {
         calculatorView.setText(numbersText.append(s));
-        operation.setNum1(Double.valueOf(s));
+        if (operation.getTouchOperatorBtn()){
+            operation.setNum2(Double.valueOf(s));
+        } else {
+            operation.setNum1(Double.valueOf(s));
+        }
     }
 
     private void opBtnText (String s){
         calculatorView.setText(numbersText.append(s));
         operation.setOperator(s);
+        operation.setTouchOperatorBtn(true);
     }
 }

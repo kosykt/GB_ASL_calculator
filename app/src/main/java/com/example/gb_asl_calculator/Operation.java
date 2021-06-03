@@ -2,8 +2,8 @@ package com.example.gb_asl_calculator;
 
 public class Operation {
 
-    private Double num1 = 6.0;
-    private Double num2 = 2.0;
+    private Double num1 = 0.0;
+    private Double num2 = 0.0;
     private String operator = "";
     private Boolean touchNumBtn = false;
     private Boolean touchOperatorBtn = false;
@@ -48,5 +48,21 @@ public class Operation {
 
     public void setNum2(Double num2) {
         this.num2 = num2;
+    }
+
+    public Boolean getTouchNumBtn() {
+        return touchNumBtn;
+    }
+
+    public void setTouchNumBtn(Boolean touchNumBtn) {
+        this.touchNumBtn = touchNumBtn;
+    }
+
+    public Boolean getTouchOperatorBtn() {
+        return touchOperatorBtn;
+    }
+
+    public void setTouchOperatorBtn(Boolean touchOperatorBtn) {
+        this.touchOperatorBtn = touchOperatorBtn;
     }
 }
