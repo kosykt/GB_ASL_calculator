@@ -18,7 +18,10 @@
 
     <TextView
         android:id="@+id/calculator_txt"
-        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margins_left_right"
+        android:layout_marginRight="@dimen/margins_left_right"
         android:textColor="@color/black"
         android:textSize="@dimen/calculator_txt_size"
         app:layout_constraintBottom_toTopOf="@id/btn_9"
@@ -27,7 +30,10 @@
 
     <TextView
         android:id="@+id/save_num_txt"
-        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margins_left_right"
+        android:layout_marginRight="@dimen/margins_left_right"
         android:textColor="@color/black"
         android:textSize="@dimen/calculator_txt_size"
         app:layout_constraintBottom_toTopOf="@id/calculator_txt"
