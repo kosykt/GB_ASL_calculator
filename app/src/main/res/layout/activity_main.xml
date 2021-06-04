@@ -136,7 +136,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_0"
                 style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-                android:text="@string/btn_0"/>
+                android:text="@string/btn_0" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_result"
