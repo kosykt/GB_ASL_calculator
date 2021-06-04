@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margins_left_right">2dp</dimen>
+    <dimen name="margins">2dp</dimen>
     <dimen name="calculator_txt_size">30sp</dimen>
-    <dimen name="btn_txt_size">20sp</dimen>
-    <dimen name="inset_right_left">20dp</dimen>
+    <dimen name="btn_txt_size">40sp</dimen>
+    <dimen name="inset_right_left">0dp</dimen>
     <dimen name="corner_radius">20dp</dimen>
+    <dimen name="min_width">80dp</dimen>
 </resources>

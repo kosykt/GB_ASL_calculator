@@ -15,15 +15,12 @@
     </style>
     <style name="Theme.GB_ASL_calculator.MyBtnStyle">
         <item name="android:textSize">@dimen/btn_txt_size</item>
-        <item name="android:layout_marginLeft">@dimen/margins_left_right</item>
-        <item name="android:layout_marginRight">@dimen/margins_left_right</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:backgroundTint">@color/black85</item>
-        <item name="android:insetRight">@dimen/inset_right_left</item>
-        <item name="android:insetLeft">@dimen/inset_right_left</item>
-        <item name="cornerRadius">@dimen/corner_radius</item>
+        <item name="android:minWidth">@dimen/min_width</item>
+        <item name="android:layout_margin">@dimen/margins</item>
     </style>
     <style name="Theme.GB_ASL_calculator.MyAppStyle">
         <item name="android:background">@drawable/night_background</item>
