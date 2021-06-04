@@ -25,4 +25,7 @@
         <item name="android:insetLeft">@dimen/inset_right_left</item>
         <item name="cornerRadius">@dimen/corner_radius</item>
     </style>
+    <style name="Theme.GB_ASL_calculator.MyAppStyle">
+        <item name="android:background">@drawable/previewbackgroundone</item>
+    </style>
 </resources>
