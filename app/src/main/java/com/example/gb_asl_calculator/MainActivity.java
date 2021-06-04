@@ -82,12 +82,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void clear() {
-        operation.setOperator("");
         operation.setNum1(0.0);
         operation.setNum2(0.0);
-        operation.setTouchOperatorBtn(false);
+        operation.setOperator("");
         operation.setTouchNum1Btn(false);
+        operation.setTouchOperatorBtn(false);
         operation.setTouchNum2Btn(false);
+        operation.setTouchResBtn(false);
         number1Text = new StringBuffer();
         number2Text = new StringBuffer();
         answerText = new StringBuffer();
@@ -96,10 +97,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void answer() {
-        operation.setTouchResBtn(true);
         String s = String.valueOf(operation.getAnswer());
         calculatorView.setText(answerText.append(operation.getAnswer()));
         clear();
+        operation.setTouchResBtn(true);
         number1Text.append(s);
         operation.setNum1(Double.valueOf(String.valueOf(number1Text)));
     }
@@ -150,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
             reserveText.append(operation.getNum1());
             number1Text.append(operation.getNum1());
             calculatorView.setText(reserveText);
+            operation.setTouchResBtn(false);
             if (operation.getTouchOperatorBtn()) {
                 reserveText.append(operation.getOperator());
                 operatorText.append(operation.getOperator());
