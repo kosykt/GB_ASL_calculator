@@ -13,6 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="Theme.GB_ASL_calculator.MyBtnStyle">
         <item name="android:textSize">@dimen/btn_txt_size</item>
         <item name="android:textColor">@color/white</item>
@@ -20,8 +21,11 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:backgroundTint">@color/black85</item>
         <item name="android:minWidth">@dimen/min_width</item>
+        <item name="android:minHeight">@dimen/min_height</item>
+        <item name="cornerRadius">@dimen/corner_radius</item>
         <item name="android:layout_margin">@dimen/margins</item>
     </style>
+
     <style name="Theme.GB_ASL_calculator.MyAppStyle">
         <item name="android:background">@drawable/night_background</item>
     </style>
