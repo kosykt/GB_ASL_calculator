@@ -2,9 +2,10 @@
 <resources>
     <dimen name="margins">2dp</dimen>
     <dimen name="calculator_txt_size">30sp</dimen>
-    <dimen name="btn_txt_size">40sp</dimen>
+    <dimen name="btn_txt_size">20sp</dimen>
     <dimen name="inset_right_left">0dp</dimen>
     <dimen name="corner_radius">20dp</dimen>
-    <dimen name="min_width">80dp</dimen>
+    <dimen name="min_width">0dp</dimen>
+    <dimen name="min_height">0dp</dimen>
     <dimen name="margins_left_right">2dp</dimen>
 </resources>

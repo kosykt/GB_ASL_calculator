@@ -12,9 +12,8 @@
         android:insetLeft="@dimen/inset_right_left"
         android:insetRight="@dimen/inset_right_left"
         android:text="@string/btn_c"
-        app:layout_constraintBottom_toTopOf="@id/btn_divide"
-        app:layout_constraintEnd_toEndOf="@id/btn_divide"
-        app:layout_constraintStart_toStartOf="@id/btn_divide" />
+        app:layout_constraintBottom_toTopOf="@id/table_layout"
+        app:layout_constraintStart_toStartOf="@id/table_layout" />
 
     <TextView
         android:id="@+id/calculator_txt"
@@ -24,8 +23,8 @@
         android:layout_marginRight="@dimen/margins_left_right"
         android:textColor="@color/black"
         android:textSize="@dimen/calculator_txt_size"
-        app:layout_constraintBottom_toTopOf="@id/btn_9"
-        app:layout_constraintEnd_toStartOf="@id/btn_c"
+        app:layout_constraintBottom_toTopOf="@id/table_layout"
+        app:layout_constraintStart_toEndOf="@id/btn_c"
         tools:text="example" />
 
     <TextView
@@ -37,161 +36,118 @@
         android:textColor="@color/black"
         android:textSize="@dimen/calculator_txt_size"
         app:layout_constraintBottom_toTopOf="@id/calculator_txt"
-        app:layout_constraintEnd_toStartOf="@id/btn_c"
+        app:layout_constraintStart_toEndOf="@id/btn_c"
         tools:text="example" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_7"
+    <TableLayout
+        android:id="@+id/table_layout"
         style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-        android:text="@string/btn_7"
-        app:layout_constraintBottom_toTopOf="@id/btn_4"
-        app:layout_constraintEnd_toStartOf="@id/btn_8"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_8"
-        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-        android:text="@string/btn_8"
-        app:layout_constraintBottom_toTopOf="@id/btn_5"
-        app:layout_constraintEnd_toStartOf="@+id/btn_9"
-        app:layout_constraintStart_toEndOf="@id/btn_7"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_9"
-        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-        android:text="@string/btn_9"
-        app:layout_constraintBottom_toTopOf="@id/btn_6"
-        app:layout_constraintEnd_toStartOf="@id/btn_divide"
-        app:layout_constraintStart_toEndOf="@id/btn_8"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_divide"
-        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-        android:text="@string/btn_divide"
-        app:layout_constraintBottom_toTopOf="@id/btn_multiply"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_9"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_4"
-        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-        android:text="@string/btn_4"
-        app:layout_constraintBottom_toTopOf="@id/btn_1"
-        app:layout_constraintEnd_toStartOf="@id/btn_5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_7" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_5"
-        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-        android:text="@string/btn_5"
-        app:layout_constraintBottom_toTopOf="@id/btn_2"
-        app:layout_constraintEnd_toStartOf="@id/btn_6"
-        app:layout_constraintStart_toEndOf="@id/btn_4"
-        app:layout_constraintTop_toBottomOf="@id/btn_8" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_6"
-        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-        android:text="@string/btn_6"
-        app:layout_constraintBottom_toTopOf="@id/btn_3"
-        app:layout_constraintEnd_toStartOf="@id/btn_multiply"
-        app:layout_constraintStart_toEndOf="@id/btn_5"
-        app:layout_constraintTop_toBottomOf="@id/btn_9" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_multiply"
-        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-        android:text="@string/btn_multiply"
-        app:layout_constraintBottom_toTopOf="@id/btn_minus"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_6"
-        app:layout_constraintTop_toBottomOf="@id/btn_divide" />
-
-    <com.google.android.material.button.MaterialButton
-
-        android:id="@+id/btn_1"
-        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-        android:text="@string/btn_1"
-        app:layout_constraintBottom_toTopOf="@id/btn_dot"
-        app:layout_constraintEnd_toStartOf="@id/btn_2"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_4" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_2"
-        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-        android:text="@string/btn_2"
-        app:layout_constraintBottom_toTopOf="@id/btn_0"
-        app:layout_constraintEnd_toStartOf="@id/btn_3"
-        app:layout_constraintStart_toEndOf="@id/btn_1"
-        app:layout_constraintTop_toBottomOf="@id/btn_5" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_3"
-        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-        android:text="@string/btn_3"
-        app:layout_constraintBottom_toTopOf="@id/btn_result"
-        app:layout_constraintEnd_toStartOf="@id/btn_minus"
-        app:layout_constraintStart_toEndOf="@id/btn_2"
-        app:layout_constraintTop_toBottomOf="@id/btn_6" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_minus"
-        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-        android:text="@string/btn_minus"
-        app:layout_constraintBottom_toTopOf="@id/btn_plus"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_3"
-        app:layout_constraintTop_toBottomOf="@id/btn_multiply" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_dot"
-        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-        android:text="@string/btn_dot"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_0"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_1" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_0"
-        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-        android:text="@string/btn_0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_result"
-        app:layout_constraintStart_toEndOf="@id/btn_dot"
-        app:layout_constraintTop_toBottomOf="@id/btn_2" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_result"
-        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-        android:text="@string/btn_result"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_plus"
-        app:layout_constraintStart_toEndOf="@id/btn_0"
-        app:layout_constraintTop_toBottomOf="@id/btn_3" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_plus"
-        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-        android:text="@string/btn_sum"
-        android:textSize="@dimen/btn_txt_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_result"
-        app:layout_constraintTop_toBottomOf="@id/btn_minus" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_7"
+                style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+                android:text="@string/btn_7" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_8"
+                style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+                android:text="@string/btn_8" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_9"
+                style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+                android:text="@string/btn_9" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_divide"
+                style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+                android:text="@string/btn_divide" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_4"
+                style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+                android:text="@string/btn_4" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_5"
+                style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+                android:text="@string/btn_5" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_6"
+                style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+                android:text="@string/btn_6" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_multiply"
+                style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+                android:text="@string/btn_multiply" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_1"
+                style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+                android:text="@string/btn_1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_2"
+                style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+                android:text="@string/btn_2" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_3"
+                style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+                android:text="@string/btn_3" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_minus"
+                style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+                android:text="@string/btn_minus" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_dot"
+                style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+                android:text="@string/btn_dot" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_0"
+                style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+                android:text="@string/btn_0"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_result"
+                style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+                android:text="@string/btn_result" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_plus"
+                style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+                android:text="@string/btn_sum" />
+        </TableRow>
+    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
