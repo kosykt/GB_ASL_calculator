@@ -1,5 +1,6 @@
 package com.example.gb_asl_calculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -11,12 +12,15 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final static String keyCounters = "Counters";
+
     private Operation operation;
     private TextView calculatorView;
     private StringBuffer number1Text = new StringBuffer();
     private StringBuffer number2Text = new StringBuffer();
     private StringBuffer operatorText = new StringBuffer();
     private StringBuffer answerText = new StringBuffer();
+    private StringBuffer reserveText = new StringBuffer();
     private Button button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_dot, button_plus, button_minus, button_divide, button_multiply, button_clear, button_result;
 
     @Override
@@ -82,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
         operation.setNum1(0.0);
         operation.setNum2(0.0);
         operation.setTouchOperatorBtn(false);
-        operation.setTouchNumBtn(false);
+        operation.setTouchNum1Btn(false);
+        operation.setTouchNum2Btn(false);
         number1Text = new StringBuffer();
         number2Text = new StringBuffer();
         answerText = new StringBuffer();
@@ -91,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void answer() {
+        operation.setTouchResBtn(true);
         String s = String.valueOf(operation.getAnswer());
         calculatorView.setText(answerText.append(operation.getAnswer()));
         clear();
@@ -100,11 +106,12 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void numBtnText(String s) {
-        operation.setTouchNumBtn(true);
+        operation.setTouchResBtn(false);
         if (operation.getTouchOperatorBtn()) {
             number2Text.append(s);
             calculatorView.setText(calculatorView.getText() + s);
             operation.setNum2(Double.valueOf(String.valueOf(number2Text)));
+            operation.setTouchNum2Btn(true);
         } else {
             number1Text.append(s);
             calculatorView.setText(calculatorView.getText() + s);
@@ -114,9 +121,51 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void opBtnText(String s) {
-        calculatorView.setText(calculatorView.getText() + s);
-        operatorText.append(s);
-        operation.setOperator(s);
-        operation.setTouchOperatorBtn(true);
+        operation.setTouchResBtn(false);
+        if (operation.getTouchOperatorBtn()) {
+            answer();
+        } else {
+            calculatorView.setText(calculatorView.getText() + s);
+            operatorText.append(s);
+            operation.setOperator(s);
+            operation.setTouchOperatorBtn(true);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle instanceState) {
+        super.onSaveInstanceState(instanceState);
+        instanceState.putParcelable(keyCounters, operation);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle instanceState) {
+        super.onRestoreInstanceState(instanceState);
+        operation = instanceState.getParcelable(keyCounters);
+        setTextCalculator();
+    }
+
+    private void setTextCalculator() {
+        if (operation.getTouchNum1Btn()) {
+            reserveText.append(operation.getNum1());
+            number1Text.append(operation.getNum1());
+            calculatorView.setText(reserveText);
+            if (operation.getTouchOperatorBtn()) {
+                reserveText.append(operation.getOperator());
+                operatorText.append(operation.getOperator());
+                calculatorView.setText(reserveText);
+                if (operation.getTouchNum2Btn()) {
+                    reserveText.append(operation.getNum2());
+                    number2Text.append(operation.getNum2());
+                    calculatorView.setText(reserveText);
+
+                }
+            }
+        }
+        if (operation.getTouchResBtn()){
+            reserveText.append(operation.getSaveAnswer());
+            answerText.append(operation.getSaveAnswer());
+            calculatorView.setText(reserveText);
+        }
     }
 }
