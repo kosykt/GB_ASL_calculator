@@ -2,6 +2,7 @@ package com.example.gb_asl_calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -11,8 +12,10 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private Operation operation;
-    private TextView calculatorView, secondCalculatorView;
-    private StringBuffer numbersText = new StringBuffer();
+    private TextView calculatorView;
+    private StringBuffer number1Text = new StringBuffer();
+    private StringBuffer number2Text = new StringBuffer();
+    private StringBuffer operatorText = new StringBuffer();
     private StringBuffer answerText = new StringBuffer();
     private Button button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_dot, button_plus, button_minus, button_divide, button_multiply, button_clear, button_result;
 
@@ -32,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void initIdBtn() {
         calculatorView = findViewById(R.id.calculator_txt);
-        secondCalculatorView = findViewById(R.id.save_num_txt);
         button_0 = findViewById(R.id.btn_0);
         button_1 = findViewById(R.id.btn_1);
         button_2 = findViewById(R.id.btn_2);
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         button_clear = findViewById(R.id.btn_c);
         button_result = findViewById(R.id.btn_result);
     }
+
     private void clickBtn() {
         button_0.setOnClickListener(v -> numBtnText("0"));
         button_1.setOnClickListener(v -> numBtnText("1"));
@@ -62,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         button_7.setOnClickListener(v -> numBtnText("7"));
         button_8.setOnClickListener(v -> numBtnText("8"));
         button_9.setOnClickListener(v -> numBtnText("9"));
-        button_dot.setOnClickListener(v -> numBtnText("."));
+//        button_dot.setOnClickListener(v -> dotBtnText("."));
         button_plus.setOnClickListener(v -> opBtnText("+"));
         button_minus.setOnClickListener(v -> opBtnText("-"));
         button_multiply.setOnClickListener(v -> opBtnText("*"));
@@ -70,40 +73,49 @@ public class MainActivity extends AppCompatActivity {
         button_result.setOnClickListener(v -> answer());
         button_clear.setOnClickListener(v -> {
             calculatorView.setText("");
-            secondCalculatorView.setText("");
-            operation.setOperator("");
-            operation.setNum1(0.0);
-            operation.setNum2(0.0);
-            operation.setTouchOperatorBtn(false);
-            operation.setTouchNumBtn(false);
-            numbersText = new StringBuffer();
-            answerText = new StringBuffer();
+            clear();
         });
     }
 
     private void clear() {
-        calculatorView.setText("");
-        numbersText = new StringBuffer();
+        operation.setOperator("");
+        operation.setNum1(0.0);
+        operation.setNum2(0.0);
+        operation.setTouchOperatorBtn(false);
+        operation.setTouchNumBtn(false);
+        number1Text = new StringBuffer();
+        number2Text = new StringBuffer();
         answerText = new StringBuffer();
-
+        operatorText = new StringBuffer();
     }
+
 
     private void answer() {
-        secondCalculatorView.setText(answerText.append(operation.getAnswer()));
-
+        String s = String.valueOf(operation.getAnswer());
+        calculatorView.setText(answerText.append(operation.getAnswer()));
+        clear();
+        number1Text.append(s);
+        operation.setNum1(Double.valueOf(String.valueOf(number1Text)));
     }
 
+    @SuppressLint("SetTextI18n")
     private void numBtnText(String s) {
-        calculatorView.setText(numbersText.append(s));
-        if (operation.getTouchOperatorBtn()){
-            operation.setNum2(Double.valueOf(s));
+        operation.setTouchNumBtn(true);
+        if (operation.getTouchOperatorBtn()) {
+            number2Text.append(s);
+            calculatorView.setText(calculatorView.getText() + s);
+            operation.setNum2(Double.valueOf(String.valueOf(number2Text)));
         } else {
-            operation.setNum1(Double.valueOf(s));
+            number1Text.append(s);
+            calculatorView.setText(calculatorView.getText() + s);
+            operation.setNum1(Double.valueOf(String.valueOf(number1Text)));
         }
     }
 
-    private void opBtnText (String s){
-        calculatorView.setText(numbersText.append(s));
+    @SuppressLint("SetTextI18n")
+    private void opBtnText(String s) {
+        calculatorView.setText(calculatorView.getText() + s);
+        operatorText.append(s);
         operation.setOperator(s);
         operation.setTouchOperatorBtn(true);
     }
