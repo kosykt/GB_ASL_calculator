@@ -10,11 +10,18 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_c"
         style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
-        android:insetLeft="@dimen/inset_right_left"
-        android:insetRight="@dimen/inset_right_left"
         android:text="@string/btn_c"
         app:layout_constraintBottom_toTopOf="@id/table_layout"
         app:layout_constraintStart_toStartOf="@id/table_layout" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+        android:text="@string/options"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/margin_option_btn"/>
 
     <TextView
         android:id="@+id/calculator_txt"
