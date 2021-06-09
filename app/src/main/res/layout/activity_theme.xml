@@ -10,14 +10,6 @@
     android:orientation="vertical"
     tools:context=".ThemeActivity">
 
-    <TextView
-        android:id="@+id/theme_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="@dimen/calculator_txt_size"
-        tools:text="example" />
-
     <Button
         android:id="@+id/btn_standart_theme"
         style="@style/Theme.GB_ASL_calculator.MyBtnStyle"

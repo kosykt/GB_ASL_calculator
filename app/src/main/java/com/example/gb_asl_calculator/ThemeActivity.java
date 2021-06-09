@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ThemeActivity extends AppCompatActivity {
 
+//Не смог разобратся со сменой темы, не судите сторого
+
     public static final String KEY_RESULT = "KEY_RESULT";
     public static final String KEY_TEXT_TO_DISPLAY = "KEY_TEXT_TO_DISPLAY";
 
