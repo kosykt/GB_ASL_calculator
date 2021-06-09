@@ -37,16 +37,7 @@ public class MainActivity extends AppCompatActivity {
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        ActivityResultLauncher<Intent> launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-            @Override
-            public void onActivityResult(ActivityResult result) {
-                if (result.getResultCode() == Activity.RESULT_OK){
-                    if (result.getData() != null){
 
-                    }
-                }
-            }
-        });
 
         operation = new Operation();
 

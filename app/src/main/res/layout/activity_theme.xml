@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/theme_act_lay"
+    style="@style/Theme.GB_ASL_calculator.MyAppStyle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".ThemeActivity">
+
+    <Button
+        android:id="@+id/btn_standart_theme"
+        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="@string/standart_theme" />
+
+    <Button
+        android:id="@+id/btn_mystyle_theme"
+        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="@string/my_style_theme" />
+
+    <Button
+        android:id="@+id/btn_mystyle_night_theme"
+        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="@string/my_style_night_theme" />
+</LinearLayout>
