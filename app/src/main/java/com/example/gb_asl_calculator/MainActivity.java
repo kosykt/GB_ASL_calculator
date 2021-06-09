@@ -1,17 +1,17 @@
 package com.example.gb_asl_calculator;
 
-import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.activity.result.contract.ActivityResultContract;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextDirectionHeuristics;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -32,6 +32,25 @@ public class MainActivity extends AppCompatActivity {
     private StringBuffer reserveText = new StringBuffer();
     private Button button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_dot, button_plus, button_minus, button_divide, button_multiply, button_clear, button_result;
 
+    public static class OptionsResult extends ActivityResultContract<String, String> {
+
+        @NonNull
+        @Override
+        public Intent createIntent(@NonNull Context context, String input) {
+            Intent intent = new Intent(context, ThemeActivity.class);
+            intent.putExtra(ThemeActivity.KEY_TEXT_TO_DISPLAY, input);
+            return intent;
+        }
+
+        @Override
+        public String parseResult(int resultCode, @Nullable Intent intent) {
+            if (resultCode == Activity.RESULT_OK && intent != null) {
+                return intent.getStringExtra(ThemeActivity.KEY_RESULT);
+            }
+            return null;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,22 +59,20 @@ public class MainActivity extends AppCompatActivity {
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-            @Override
-            public void onActivityResult(ActivityResult result) {
-                if (result.getResultCode() == Activity.RESULT_OK){
-                    if (result.getData() != null){
-                        Toast.makeText(MainActivity.this, result.getData().getStringExtra(ThemeActivity.KEY_RESULT), Toast.LENGTH_SHORT).show();
+        ActivityResultLauncher<String> resultLauncher = registerForActivityResult(new OptionsResult(), new ActivityResultCallback<String>() {
+                    @Override
+                    public void onActivityResult(String result) {
+                        if (result != null) {
+                            Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
-            }
-        });
+        );
 
         findViewById(R.id.btn_options).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ThemeActivity.class);
-                resultLauncher.launch(intent);
+                resultLauncher.launch("Hello");
             }
         });
 
@@ -192,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        if (operation.getTouchResBtn()){
+        if (operation.getTouchResBtn()) {
             reserveText.append(operation.getSaveAnswer());
             answerText.append(operation.getSaveAnswer());
             calculatorView.setText(reserveText);

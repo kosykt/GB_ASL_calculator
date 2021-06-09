@@ -1,8 +1,12 @@
 package com.example.gb_asl_calculator;
 
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +15,7 @@ import android.widget.TextView;
 public class ThemeActivity extends AppCompatActivity {
 
     public static final String KEY_RESULT = "KEY_RESULT";
+    public static final String KEY_TEXT_TO_DISPLAY = "KEY_TEXT_TO_DISPLAY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
