@@ -21,5 +21,6 @@
     <string name="standart_theme">standart theme</string>
     <string name="my_style_theme">my style theme</string>
     <string name="my_style_night_theme">my style night theme</string>
+    <string name="open_browser">open browser</string>
     />
 </resources>
