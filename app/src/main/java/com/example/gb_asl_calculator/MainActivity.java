@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -39,6 +40,15 @@ public class MainActivity extends AppCompatActivity {
 
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        findViewById(R.id.btn_browser).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://google.com");
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(Intent.createChooser(browserIntent, null));
+            }
+        });
 
         ActivityResultLauncher<String> resultLauncher = registerForActivityResult(new OptionsResult(), new ActivityResultCallback<String>() {
                     @Override
