@@ -8,4 +8,5 @@
     <dimen name="min_width">0dp</dimen>
     <dimen name="min_height">55dp</dimen>
     <dimen name="margins_left_right">2dp</dimen>
+    <dimen name="margin_option_btn">15dp</dimen>
 </resources>

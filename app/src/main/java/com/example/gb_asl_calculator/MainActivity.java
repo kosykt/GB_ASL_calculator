@@ -1,14 +1,24 @@
 package com.example.gb_asl_calculator;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private StringBuffer number2Text = new StringBuffer();
     private StringBuffer operatorText = new StringBuffer();
     private StringBuffer answerText = new StringBuffer();
-    private StringBuffer reserveText = new StringBuffer();
+    private final StringBuffer reserveText = new StringBuffer();
     private Button button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9, button_dot, button_plus, button_minus, button_divide, button_multiply, button_clear, button_result;
 
     @Override
@@ -30,6 +40,32 @@ public class MainActivity extends AppCompatActivity {
 
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        findViewById(R.id.btn_browser).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://google.com");
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(Intent.createChooser(browserIntent, null));
+            }
+        });
+
+        ActivityResultLauncher<String> resultLauncher = registerForActivityResult(new OptionsResult(), new ActivityResultCallback<String>() {
+                    @Override
+                    public void onActivityResult(String result) {
+                        if (result != null) {
+                            Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+        );
+
+        findViewById(R.id.btn_options).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultLauncher.launch("Hello");
+            }
+        });
 
         operation = new Operation();
 
@@ -94,7 +130,6 @@ public class MainActivity extends AppCompatActivity {
         answerText = new StringBuffer();
         operatorText = new StringBuffer();
     }
-
 
     private void answer() {
         String s = String.valueOf(operation.getAnswer());
@@ -164,10 +199,29 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        if (operation.getTouchResBtn()){
+        if (operation.getTouchResBtn()) {
             reserveText.append(operation.getSaveAnswer());
             answerText.append(operation.getSaveAnswer());
             calculatorView.setText(reserveText);
+        }
+    }
+
+    public static class OptionsResult extends ActivityResultContract<String, String> {
+
+        @NonNull
+        @Override
+        public Intent createIntent(@NonNull Context context, String input) {
+            Intent intent = new Intent(context, ThemeActivity.class);
+            intent.putExtra(ThemeActivity.KEY_TEXT_TO_DISPLAY, input);
+            return intent;
+        }
+
+        @Override
+        public String parseResult(int resultCode, @Nullable Intent intent) {
+            if (resultCode == Activity.RESULT_OK && intent != null) {
+                return intent.getStringExtra(ThemeActivity.KEY_RESULT);
+            }
+            return null;
         }
     }
 }

@@ -7,6 +7,26 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_options"
+        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_option_btn"
+        android:text="@string/options"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_browser"
+        style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_option_btn"
+        android:text="@string/open_browser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_c"
         style="@style/Theme.GB_ASL_calculator.MyBtnStyle"
         android:insetLeft="@dimen/inset_right_left"
